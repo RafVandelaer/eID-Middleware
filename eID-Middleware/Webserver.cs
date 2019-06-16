@@ -61,6 +61,8 @@ namespace WebServerNamespace
                         ThreadPool.QueueUserWorkItem(c =>
                         {
                             var ctx = c as HttpListenerContext;
+                            ctx.Response.ContentType = "application/json";
+                            ctx.Response.AddHeader("Access-Control-Allow-Origin", "*");
                             try
                             {
                                 if (ctx == null)
